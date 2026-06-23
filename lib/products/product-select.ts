@@ -1,6 +1,6 @@
 import{ db } from '@/db';
 import { products } from '@/db/schema';
-import { desc, eq } from "drizzle-orm";
+import { count, countDistinct, desc, eq } from "drizzle-orm";
 import { connection } from 'next/dist/server/web/exports';
 
 export async function getFeaturedProducts() {
@@ -20,6 +20,21 @@ export async function getAllApprovedProducts() {
     .where(eq(products.status, "approved"))
     .orderBy(desc(products.voteCount));
     return productsData;
+}
+
+export async function getApprovedProductCount() {
+    const [result] = await db
+        .select({ count: count() })
+        .from(products)
+        .where(eq(products.status, "approved"));
+    return result.count;
+}
+
+export async function getUserCount() {
+    const [result] = await db
+        .select({ count: countDistinct(products.userId) })
+        .from(products);
+    return result.count;
 }
 
 export async function getAllProducts() {

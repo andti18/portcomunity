@@ -9,7 +9,7 @@ const outfit = Outfit({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "iBuiltThis",
+  title: "Porto Community",
   description: "Platform to share projects portofolio",
 };
 

@@ -10,7 +10,7 @@ const Logo = () => {
             <div className="size-8 rounder-lg bg-primary flex items-center justify-center">
                 <SparkleIcon className="size-4 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold">i<span className="text-primary">Built</span>This</span>
+            <span className="text-xl font-bold"><span className="text-primary">Porto</span> Community</span>
         </Link>
     );
 

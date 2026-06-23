@@ -14,19 +14,19 @@ const LiveBadge = () => {
         </Badge>
     );
 };
-
-const statsData = [
+interface HeroSectionProps {
+    productCount: number;
+    userCount: number;
+}
+const statsData = (productCount: number, userCount: number) =>[
     {
-        icon: RocketIcon, value: "2.5k+", label: "Projects Shared"
+        icon: RocketIcon, value: productCount.toLocaleString(), label: "Projects Shared"
     },
-        {
-        icon: UserIcon, value: "10k+", label: "Active Creators", hashBorder: true,
-    },
-        {
-        icon: EyeIcon, value: "50k+", label: "Monthly Visitor"
+    {
+        icon: UserIcon, value: userCount.toLocaleString(), label: "Active Creators", hashBorder: true,
     }
 ]
-export default function HeroSection() {
+export default function HeroSection({ productCount, userCount }: HeroSectionProps) {
     return (
         <section className="relative overflow-hidden bg-linear-to-b from-background via-background to-muted/20">
             <div className="wrapper">
@@ -52,8 +52,8 @@ export default function HeroSection() {
                             </Link>
                         </Button>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-2xl w-full mx-auto">
-                        {statsData.map((stat, index) => (
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 max-w-2xl w-full mx-auto">
+                        {statsData(productCount, userCount).map((stat) => (
                             <StatsCard key={stat.label} {...stat} />
                         ))}
                     </div>
