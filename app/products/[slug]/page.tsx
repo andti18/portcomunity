@@ -1,3 +1,4 @@
+"use cache";
 
 import { notFound } from "next/dist/client/components/navigation";
 import { getFeaturedProducts } from "../../../lib/products/product-select";
